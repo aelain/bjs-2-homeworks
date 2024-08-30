@@ -1,21 +1,21 @@
 'use strict';
 
 function solveEquation(a, b, c) {
-  let arr = [];
-  let d = b ** 2 - 4 * a * c;
+  const roots = [];
+  const discriminant = b ** 2 - 4 * a * c;
 
-  if (d === 0) {
-    arr.push(-b / (2 * a));
-  } else if (d > 0) {
-    arr.push((-b + Math.sqrt(d)) / (2 * a), (-b - Math.sqrt(d)) / (2 * a));
+  if (discriminant === 0) {
+    roots.push(-b / (2 * a));
+  } else if (discriminant > 0) {
+    roots.push((-b + Math.sqrt(discriminant)) / (2 * a), (-b - Math.sqrt(discriminant)) / (2 * a));
   }
 
-  return arr;
+  return roots;
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  let monthlyInterest = percent / 100 / 12;
-  let remainingAmount = amount - contribution;
-  let monthlyPayment = remainingAmount * (monthlyInterest + (monthlyInterest / (((1 + monthlyInterest) ** countMonths) - 1)));
+  const monthlyInterest = percent / 100 / 12;
+  const remainingAmount = amount - contribution;
+  const monthlyPayment = remainingAmount * (monthlyInterest + (monthlyInterest / (((1 + monthlyInterest) ** countMonths) - 1)));
   return parseFloat((monthlyPayment * countMonths).toFixed(2));
 }

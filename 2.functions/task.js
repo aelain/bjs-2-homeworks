@@ -16,9 +16,9 @@ function summElementsWorker(...array) {
 function differenceMaxMinWorker(...array) {
   if (!array.length) {
     return 0;
-  } else {
-    return Math.max(...array) - Math.min(...array);
   }
+
+  return Math.max(...array) - Math.min(...array);
 }
 
 function differenceEvenOddWorker(...array) {

@@ -75,22 +75,17 @@ class Library {
   }
 
   findBookBy(type, value) {
-    for (let item of this.books) {
-      if (item[type] === value) {
-        return item;
-      }
-    }
-    return null;
+    const findResult = this.books.find(item => item[type] === value);
+    return findResult || null;
   }
 
   giveBookByName(bookName) {
-    for (let item of this.books) {
-      if (item.name === bookName) {
-        this.books.splice(this.books.indexOf(item), 1);
-        return item;
-      }
+    const book = this.findBookBy('name', bookName);
+    if (!book) {
+      return null;
     }
-    return null;
+    this.books = this.books.filter(item => item.name !== bookName);
+    return book;
   }
 }
 

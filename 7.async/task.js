@@ -35,19 +35,16 @@ class AlarmClock {
       return;
     }
 
-    const currentFormattedTime = this.getCurrentFormattedTime.bind(this);
-
-    function createInterval() {
-      this.alarmCollection.forEach(function (item) {
-        if (item.time === currentFormattedTime() && item.canCall) {
+    const intervalId = setInterval(() => {
+      this.alarmCollection.forEach(item => {
+        if (item.time === this.getCurrentFormattedTime() && item.canCall) {
           item.canCall = false;
           item.callback();
         }
       });
-    }
-
-    const bindedCreateInterval = createInterval.bind(this);
-    this.intervalId = setInterval(bindedCreateInterval, 1000);
+    }, 1000)
+    
+    this.intervalId = intervalId;
   }
 
   stop() {
